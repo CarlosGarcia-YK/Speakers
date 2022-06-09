@@ -10,7 +10,7 @@ void printDetail(uint8_t type, int value);
 void setup()
 {
   mySoftwareSerial.begin(9600);
-  Serial.begin(9600);
+  Serial.begin(9600); //F
 
   Serial.println();
   Serial.println(F("DFRobot DFPlayer Mini Demo"));
