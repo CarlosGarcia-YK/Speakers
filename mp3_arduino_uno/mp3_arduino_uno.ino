@@ -24,17 +24,29 @@ void setup()
   }
   Serial.println(F("DFPlayer Mini online."));
 
-  myDFPlayer.volume(80);  //Set volume value. From 0 to 30
-  myDFPlayer.play(1);  //Play the first mp3
-}
+  myDFPlayer.volume(15);  //Set volume value. From 0 to 30
 
+}
+ int t = 0;
+  bool x =true;
 void loop()
 {
-  static unsigned long timer = millis();
-if (millis() - timer > 8000) {
-    timer = millis();
-    myDFPlayer.next();  //Play next mp3 every 3 second.
+  if(t==0,x==true)
+  {
+    myDFPlayer.play(1);
+    x = false;
+    delay(1000);
   }
+  
+  myDFPlayer.play(t);
+  t = t+1;
+  Serial.print("Musica : "); Serial.println(t);
+  delay(30000);
+  if(t==5){
+    t = 0;
+    Serial.println("Reiniciando..."); }
+  }
+  
   
 
   if (myDFPlayer.available()) {
