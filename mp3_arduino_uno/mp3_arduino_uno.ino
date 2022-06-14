@@ -6,11 +6,15 @@
 SoftwareSerial mySoftwareSerial(10, 11); // RX, TX
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
+byte sum = 3;
+byte rest = 4;
 
 void setup()
 {
   mySoftwareSerial.begin(9600);
   Serial.begin(9600); //F
+  pinMode(sum,INPUT);
+  pinMode(rest,INPUT);
 
   Serial.println();
   Serial.println(F("DFRobot DFPlayer Mini Demo"));
@@ -27,11 +31,15 @@ void setup()
   myDFPlayer.volume(15);  //Set volume value. From 0 to 30
 
 }
+ 
  int t = 0;
-  bool x =true;
+ bool x =true;
+
+
+ 
 void loop()
 {
-  if(t==0,x==true)
+  if(x==true)
   {
     myDFPlayer.play(1);
     x = false;
@@ -39,17 +47,28 @@ void loop()
   }
   
   myDFPlayer.play(t);
-  t = t+1;
+  t = t+3;
   Serial.print("Musica : "); Serial.println(t);
-  delay(30000);
+  delay(60000);
   if(t==5){
     t = 0;
     Serial.println("Reiniciando..."); }
+  
+
+if(sum == HIGH){
+  myDFPlayer.volume(30);
+  digitalWrite(rest,LOW);
+  Serial.print("Volumen : ");Serial.println(myDFPlayer.readVolume());
+  }
+else if(rest == HIGH){
+  myDFPlayer.volume(5);
+  digitalWrite(sum,LOW);
+  Serial.print("Volumen : ");Serial.println(myDFPlayer.readVolume());
   }
   
   
 
-  if (myDFPlayer.available()) {
+  if(myDFPlayer.available()) {
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
 }
