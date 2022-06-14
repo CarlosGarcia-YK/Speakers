@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
+#include <Adafruit_GFX.h> //ag
 #include <Adafruit_SSD1306.h>
 #define ancho 128
 #define alto 64
