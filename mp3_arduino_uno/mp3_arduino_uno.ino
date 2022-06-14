@@ -25,12 +25,17 @@ int t,play,sto,next,bef,vol,v,po,d;
 void setup()
 {
   mySoftwareSerial.begin(9600);
+<<<<<<< HEAD
   Serial.begin(9600);
 t=1;
 pinMode(reproducir,INPUT);
 pinMode(parar,INPUT);
 pinMode(siguiente,INPUT);
 pinMode(anterior,INPUT);
+=======
+  Serial.begin(9600); //F
+
+>>>>>>> fc52c2e43bf6212aa56a64d3c73376fe5ae51d22
   Serial.println();
   Serial.println(F("DFRobot DFPlayer Mini Demo"));
   Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
@@ -53,6 +58,7 @@ pinMode(anterior,INPUT);
   Serial.println(F("DFPlayer Mini online."));
 myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
 
+<<<<<<< HEAD
   myDFPlayer.volume(10);  //Set volume value. From 0 to 30
   myDFPlayer.play(t);  //Play the first mp3
   Wire.begin();
@@ -60,9 +66,16 @@ oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
 v=0;
 d=1;
 }
+=======
+  myDFPlayer.volume(15);  //Set volume value. From 0 to 30
+>>>>>>> fc52c2e43bf6212aa56a64d3c73376fe5ae51d22
 
+}
+ int t = 0;
+  bool x =true;
 void loop()
 {
+<<<<<<< HEAD
   
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
@@ -113,6 +126,26 @@ void loop()
     stopped();
   }
  
+=======
+  if(t==0,x==true)
+  {
+    myDFPlayer.play(1);
+    x = false;
+    delay(1000);
+  }
+  
+  myDFPlayer.play(t);
+  t = t+1;
+  Serial.print("Musica : "); Serial.println(t);
+  delay(30000);
+  if(t==5){
+    t = 0;
+    Serial.println("Reiniciando..."); }
+  }
+  
+  
+
+>>>>>>> fc52c2e43bf6212aa56a64d3c73376fe5ae51d22
   if (myDFPlayer.available()) {
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
