@@ -20,7 +20,12 @@ const unsigned char* ricardoallArray[1] = {
 const unsigned char* ricardoBallArray[1] = {
   ricardoB3
 };
-
+const unsigned char* PauseButtonallArray[1] = {
+  PauseButtonR
+};
+const unsigned char* ContinousButtonallArray[1] = {
+  ContinousButtonR__1_
+};
 
 //-------------------------------------------------
 void ricardo()
@@ -34,6 +39,16 @@ void ricardoB()//
   display.drawBitmap(0,0,ricardoB3,128,64,BLACK);
   display.display();
   }
+void pauseboton(){
+  display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
+  display.display();
+  }
+void continueBoton()
+{
+  display.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
+  display.display();
+  }
+
 void before(){  //falta before 
   oled.clearDisplay();
     oled.setCursor(10,25);
@@ -45,25 +60,17 @@ void before(){  //falta before
     oled.clearDisplay();
     ricardoB();
 }
-void continous(){ // solo 1 de next
+void continous(){ // 
   oled.clearDisplay();
-    oled.setCursor(10,25);
-    oled.setTextColor(WHITE);
-    oled.setTextSize(2);
-    oled.print("Next");
-    oled.display();
+    continueBoton();
     delay(6000);
     oled.clearDisplay();
     ricardo();
     delay(6000);
 }
-void stopped(){ //falta stop
+void stopped(){ 
   oled.clearDisplay();
-    oled.setCursor(10,25);
-    oled.setTextColor(WHITE);
-    oled.setTextSize(2);
-    oled.print("Stop");
-    oled.display();
+    pauseboton();
     delay(6000);
     
 }
