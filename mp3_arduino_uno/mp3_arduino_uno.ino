@@ -6,7 +6,7 @@
 #include <Adafruit_SSD1306.h>
 #define ancho 128
 #define alto 64
-#define oled_reset 2
+#define oled_reset 2//
 Adafruit_SSD1306 oled(ancho,alto,&Wire,oled_reset); //Todos las librerias
  
 //----------------------------------------------------------------------
@@ -25,6 +25,7 @@ int t,play,sto,next,bef,vol,v,po,d; //Configuracion de pins
 void setup()
 {
   setupy(); //llamar variable map
+  
   
   mySoftwareSerial.begin(9600); //Configuracion de monitor
   Serial.begin(9600);
