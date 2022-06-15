@@ -18,15 +18,24 @@ const unsigned char* ricardoallArray[1] = {
   ricardo3
 };
 
+const unsigned char* ricardoBallArray[1] = {
+  ricardoB3
 
+//Solo imagenes
 //-------------------------------------------------
 void ricardo()
 {
   display.drawBitmap(0,0,ricardo3,128,64,WHITE);
   display.display();
   }
-
-
+void ricardoB()
+{
+  display.drawBitmap(0,0,ricardoB3,128,64,WHITE);
+  display.display();
+}
+  
+//Las condicionales 
+//--------------------------------------
 void before(){  //falta before 
   oled.clearDisplay();
     oled.setCursor(10,25);
@@ -58,8 +67,8 @@ void stopped(){ //falta stop
     oled.display();
     delay(6000);
     
-}
-void start(){ // solo 1 falta
+}// solo 1 falta
+void start(){ 
   oled.clearDisplay();
     oled.setCursor(10,25);
     oled.setTextColor(WHITE);
@@ -88,12 +97,12 @@ void setupy()
   display.clearDisplay();
   delay(2000);
 
-
+}
 
 //--------------------------------------------------------------------
 
 
-}
+
 void printDetail(uint8_t type, int value){
   switch (type) {
     case TimeOut:

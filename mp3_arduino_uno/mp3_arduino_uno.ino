@@ -26,7 +26,6 @@ void setup()
 {
   setupy(); //llamar variable map
   
-  
   mySoftwareSerial.begin(9600); //Configuracion de monitor
   Serial.begin(9600);
   Serial.println();
