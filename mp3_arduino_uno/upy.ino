@@ -33,6 +33,9 @@ void ricardo()
   display.clearDisplay();
   display.drawBitmap(0,0,ricardo3,128,64,WHITE);
   display.display();
+  delay(4000);
+  display.clearDisplay();
+  display.display();
   }
 
 void ricardoB()//
@@ -40,17 +43,24 @@ void ricardoB()//
   display.clearDisplay();
   display.drawBitmap(0,0,ricardoB3,128,64,WHITE);
   display.display();
+  delay(4000);
+  display.clearDisplay();
+  display.display();
   
   }
 void pauseboton(){
   display.clearDisplay();
   display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
   display.display();
+  
   }
 void continueBoton()
 {
   display.clearDisplay();
   display.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
+  display.display();
+  delay(4000);
+  display.clearDisplay();
   display.display();
   }
 
@@ -79,17 +89,13 @@ void stopped(){
     
 }
 void start(){ // solo 1 falta
-  oled.clearDisplay();
-    oled.setCursor(10,25);
-    oled.setTextColor(WHITE);
-    oled.setTextSize(2);
-    oled.print("Play");
-    oled.display();
-    //delay(6000);
     display.clearDisplay();
     display.drawBitmap(0, 0, myBitmap, 128, 64, WHITE);
      display.display();
-     //delay(6000);
+     delay(2000);
+     display.clearDisplay();
+      display.display();
+     //
 }
 void volumen(){ //falta volumen 
   oled.clearDisplay();
@@ -107,12 +113,21 @@ void setupy()
   display.clearDisplay();
   delay(2000);
 
-
+}
 
 //--------------------------------------------------------------------
 
+void album1(){
+  
+  if(t==0)
+  {
+    
+    }
+  
+  }
 
-}
+//--------------------------------------------------------------------
+
 void printDetail(uint8_t type, int value){
   switch (type) {
     case TimeOut:
