@@ -30,21 +30,26 @@ const unsigned char* ContinousButtonallArray[1] = {
 //-------------------------------------------------
 void ricardo()
 {
-  display.drawBitmap(0,0,ricardo3,128,64,BLACK);
+  display.clearDisplay();
+  display.drawBitmap(0,0,ricardo3,128,64,WHITE);
   display.display();
   }
 
 void ricardoB()//
 {
-  display.drawBitmap(0,0,ricardoB3,128,64,BLACK);
+  display.clearDisplay();
+  display.drawBitmap(0,0,ricardoB3,128,64,WHITE);
   display.display();
+  
   }
 void pauseboton(){
+  display.clearDisplay();
   display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
   display.display();
   }
 void continueBoton()
 {
+  display.clearDisplay();
   display.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
   display.display();
   }
@@ -56,22 +61,21 @@ void before(){  //falta before
     oled.setTextSize(2);
     oled.print("Before");
     oled.display();
-    delay(6000);
     oled.clearDisplay();
     ricardoB();
 }
 void continous(){ // 
   oled.clearDisplay();
-    continueBoton();
-    delay(6000);
-    oled.clearDisplay();
+    //continueBoton();
+    //delay(3000);
+    //oled.clearDisplay();
     ricardo();
-    delay(6000);
+    //delay(6000);
 }
 void stopped(){ 
   oled.clearDisplay();
     pauseboton();
-    delay(6000);
+    //delay(6000);
     
 }
 void start(){ // solo 1 falta
@@ -81,11 +85,11 @@ void start(){ // solo 1 falta
     oled.setTextSize(2);
     oled.print("Play");
     oled.display();
-    delay(6000);
-    oled.clearDisplay();
+    //delay(6000);
+    display.clearDisplay();
     display.drawBitmap(0, 0, myBitmap, 128, 64, WHITE);
      display.display();
-     delay(6000);
+     //delay(6000);
 }
 void volumen(){ //falta volumen 
   oled.clearDisplay();
