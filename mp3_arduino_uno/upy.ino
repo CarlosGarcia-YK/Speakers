@@ -73,19 +73,18 @@ void before(){  //falta before
     oled.display();
     oled.clearDisplay();
     ricardoB();
+    album1();
 }
 void continous(){ // 
   oled.clearDisplay();
-    //continueBoton();
-    //delay(3000);
-    //oled.clearDisplay();
     ricardo();
-    //delay(6000);
+    album1();
+
 }
 void stopped(){ 
   oled.clearDisplay();
     pauseboton();
-    //delay(6000);
+    
     
 }
 void start(){ // solo 1 falta
@@ -119,9 +118,84 @@ void setupy()
 
 void album1(){
   
-  if(t==0)
+  switch(t)
   {
-    
+    case 1:
+    display.clearDisplay();
+    display.setCursor(10,0);
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.print("Song 1");
+    display.display();
+    delay(2000);
+    display.clearDisplay();
+      break;
+    case 2:
+      display.clearDisplay();
+      display.setCursor(10,0);
+      display.setTextColor(WHITE);
+      display.setTextSize(2);
+      display.print("Song 2");
+      display.display();
+      delay(2000);
+      display.clearDisplay();
+      display.display();
+      break;
+    case 3:
+    display.clearDisplay();
+    display.setCursor(10,0);
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.print("Song 3");
+    display.display();
+    delay(2000);
+    display.clearDisplay();
+    display.display();
+      break;
+    case 4:
+    display.clearDisplay();
+    display.setCursor(10,0);
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.print("Song 4");
+    display.display();
+    delay(2000);
+    display.clearDisplay();
+    display.display();
+      break;
+    case 5:
+    display.clearDisplay();
+    display.setCursor(10,0);
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.print("Song 5");
+    display.display();
+    delay(2000);
+    display.clearDisplay();
+    display.display();
+      break;
+    case 6:
+      display.clearDisplay();
+       display.setCursor(10,0);
+       display.setTextColor(WHITE);
+      display.setTextSize(2);
+       display.print("Song 6");
+       display.display();
+       delay(2000);
+       display.clearDisplay();
+       display.display();
+      break;
+    default:
+       display.clearDisplay();
+       display.setCursor(10,0);
+       display.setTextColor(WHITE);
+       display.setTextSize(2);
+       display.print("Song not found");
+       display.display();
+       delay(2000);
+       display.clearDisplay();
+       display.display();
+      break;
     }
   
   }
