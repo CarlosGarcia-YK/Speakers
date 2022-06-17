@@ -20,7 +20,11 @@ int siguiente=5;
 int anterior=6;
 int pot=A0;
 int led=7;
+<<<<<<< HEAD
+int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
+=======
 int t,play,sto,next,bef,vol,v,po,d, minutos, segundos; //Configuracion de pins
+>>>>>>> da2340186daf881b4c15a6c291509735068472e1
 //---------------------------------------------------------------------
 void setup()
 {
@@ -78,7 +82,11 @@ void loop()
   bef=digitalRead(anterior);
   po=analogRead(pot);
     v=po/34.1;
+<<<<<<< HEAD
+    delay(20);
+=======
     delay(20); //
+>>>>>>> da2340186daf881b4c15a6c291509735068472e1
   if (millis() - timer > 120000) {
     timer = millis();
     if(t==12){
@@ -104,13 +112,11 @@ void loop()
   oled.print(segundos);
   oled.display();
     
-if (vol!=v){ //si vulmen es diferente
+//if (vol!=v){ //si vulmen es diferente
     vol=v;
     Serial.println (vol);
-    myDFPlayer.volume(vol);
-    
-   
-}
+    myDFPlayer.volume(vol); 
+//}
 //----------------------
 if (play==0)
 {
