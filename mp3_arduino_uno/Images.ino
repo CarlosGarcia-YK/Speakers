@@ -1,4 +1,4 @@
-// Array of all bitmaps for convenience. (Total bytes used to store images in PROGMEM = 528)
+//// Array of all bitmaps for convenience. (Total bytes used to store images in PROGMEM = 528)
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
