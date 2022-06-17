@@ -1,5 +1,5 @@
 #include <DFRobotDFPlayerMini.h>
-#include <Arduino.h>.
+#include <Arduino.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h> //ag
@@ -20,7 +20,11 @@ int siguiente=5;
 int anterior=6;
 int pot=A0;
 int led=7;
+<<<<<<< HEAD
 int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
+=======
+int t,play,sto,next,bef,vol,v,po,d, minutos, segundos; //Configuracion de pins
+>>>>>>> da2340186daf881b4c15a6c291509735068472e1
 //---------------------------------------------------------------------
 void setup()
 {
@@ -78,7 +82,11 @@ void loop()
   bef=digitalRead(anterior);
   po=analogRead(pot);
     v=po/34.1;
+<<<<<<< HEAD
     delay(20);
+=======
+    delay(20); //
+>>>>>>> da2340186daf881b4c15a6c291509735068472e1
   if (millis() - timer > 120000) {
     timer = millis();
     if(t==12){
