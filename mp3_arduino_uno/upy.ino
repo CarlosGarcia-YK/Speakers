@@ -1,9 +1,4 @@
-//*How to display images on arduino with 0.96" OLED
-  subscribe for more arduino Tuorials and Projects
-  Mission Critical
-  https://www.youtube.com/channel/UCM6rbuieQBBLFsxszWA85AQ?sub_confirmation=1
-  www.minov.in
- */
+
 
 
 #include <SPI.h>
@@ -199,6 +194,7 @@ void album1(){
     }
   
   }
+
 
 //--------------------------------------------------------------------
 
