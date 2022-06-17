@@ -26,8 +26,34 @@ const unsigned char* PauseButtonallArray[1] = {
 const unsigned char* ContinousButtonallArray[1] = {
   ContinousButtonR__1_
 };
-
+const unsigned char* musicallArray[1] = {
+  musicdownload__1_
+};
+const unsigned char* darkallArray[1] = {
+  darkdownload__2_
+};
+const unsigned char* haloallArray[1] = {
+  halodownload__3_
+};
 //-------------------------------------------------
+void halo(){
+  display.clearDisplay();
+  display.drawBitmap(0,0,halodownload__3_,128,64,WHITE);
+  display.display();
+}
+void dark(){
+  display.clearDisplay();
+  display.drawBitmap(0,0,darkdownload__2_,128,64,WHITE);
+  display.display();
+  
+  }
+void music()
+{
+  display.drawBitmap(0,0,musicdownload__1_,128,64,WHITE);
+  display.display();
+  }
+
+
 void ricardo()
 {
   display.clearDisplay();
@@ -64,14 +90,9 @@ void continueBoton()
   display.display();
   }
 
+
 void before(){  //falta before 
-  oled.clearDisplay();
-    oled.setCursor(10,25);
-    oled.setTextColor(WHITE);
-    oled.setTextSize(2);
-    oled.print("Before");
-    oled.display();
-    oled.clearDisplay();
+  display.clearDisplay();
     ricardoB();
     album1();
 }
@@ -84,9 +105,8 @@ void continous(){ //
 void stopped(){ 
   oled.clearDisplay();
     pauseboton();
-    
-    
 }
+
 void start(){ // solo 1 falta
     display.clearDisplay();
     display.drawBitmap(0, 0, myBitmap, 128, 64, WHITE);
@@ -115,91 +135,65 @@ void setupy()
 }
 
 //--------------------------------------------------------------------
-
 void album1(){
-  
-  switch(t)
+while(t<99){
+  display.clearDisplay();
+       display.setCursor(10,0);
+       display.setTextColor(WHITE);
+       display.setTextSize(1);
+       display.print("Song" + t);
+       display.display();
+   switch(t)
   {
     case 1:
-    display.clearDisplay();
-    display.setCursor(10,0);
-    display.setTextColor(WHITE);
-    display.setTextSize(2);
-    display.print("Song 1");
+    music();
     display.display();
     delay(2000);
     display.clearDisplay();
       break;
     case 2:
-      display.clearDisplay();
-      display.setCursor(10,0);
-      display.setTextColor(WHITE);
-      display.setTextSize(2);
-      display.print("Song 2");
+      music();
       display.display();
       delay(2000);
       display.clearDisplay();
       display.display();
       break;
     case 3:
-    display.clearDisplay();
-    display.setCursor(10,0);
-    display.setTextColor(WHITE);
-    display.setTextSize(2);
-    display.print("Song 3");
-    display.display();
+      dark();
+      display.display();
     delay(2000);
     display.clearDisplay();
     display.display();
       break;
     case 4:
-    display.clearDisplay();
-    display.setCursor(10,0);
-    display.setTextColor(WHITE);
-    display.setTextSize(2);
-    display.print("Song 4");
+    halo();
     display.display();
     delay(2000);
     display.clearDisplay();
     display.display();
       break;
     case 5:
-    display.clearDisplay();
-    display.setCursor(10,0);
-    display.setTextColor(WHITE);
-    display.setTextSize(2);
-    display.print("Song 5");
-    display.display();
+     music();
+     display.display();
     delay(2000);
     display.clearDisplay();
     display.display();
       break;
     case 6:
-      display.clearDisplay();
-       display.setCursor(10,0);
-       display.setTextColor(WHITE);
-      display.setTextSize(2);
-       display.print("Song 6");
-       display.display();
+      dark();
+      display.display();
        delay(2000);
        display.clearDisplay();
        display.display();
       break;
     default:
-       display.clearDisplay();
-       display.setCursor(10,0);
-       display.setTextColor(WHITE);
-       display.setTextSize(2);
-       display.print("Song not found");
-       display.display();
-       delay(2000);
-       display.clearDisplay();
-       display.display();
+       
       break;
     }
   
+  
   }
-
+}
 //--------------------------------------------------------------------
 
 void printDetail(uint8_t type, int value){

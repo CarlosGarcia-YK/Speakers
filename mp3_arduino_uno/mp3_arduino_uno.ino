@@ -20,7 +20,7 @@ int siguiente=5;
 int anterior=6;
 int pot=A0;
 int led=7;
-int t,play,sto,next,bef,vol,v,po,d; //Configuracion de pins
+int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
 //---------------------------------------------------------------------
 void setup()
 {
@@ -71,7 +71,7 @@ t=1;
 
 void loop()
 {
-  
+  static unsigned long timer = millis();
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
   next=digitalRead(siguiente);
@@ -79,14 +79,36 @@ void loop()
   po=analogRead(pot);
     v=po/34.1;
     delay(20);
+  if (millis() - timer > 120000) {
+    timer = millis();
+    if(t==12){
+      t=1;
+   }else{
+      t=t+1 ;
+    }
+    myDFPlayer.play(t);  //Play next mp3 every 3 second.
+  }
+  oled.clearDisplay();
+  oled.setTextColor(WHITE);
+  oled.setCursor(10,0) ;
+  segundos=((millis()-timer)/1000)%60 ;
+  minutos=((millis()-timer)/1000)/60 ;
+  if(minutos<10){
+    oled.print("0");
+  }
+  oled.print(minutos);
+  oled.print(":");
+  if(segundos<10){
+    oled.print("0");
+  }
+  oled.print(segundos);
+  oled.display();
     
-if (vol!=v){ //si vulmen es diferente
+//if (vol!=v){ //si vulmen es diferente
     vol=v;
     Serial.println (vol);
-    myDFPlayer.volume(vol);
-    
-   
-}
+    myDFPlayer.volume(vol); 
+//}
 //----------------------
 if (play==0)
 {
