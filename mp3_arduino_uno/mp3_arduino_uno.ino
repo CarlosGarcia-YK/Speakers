@@ -1,5 +1,5 @@
 #include <DFRobotDFPlayerMini.h>
-#include <Arduino.h>
+#include <Arduino.h>.
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h> //ag
@@ -20,15 +20,11 @@ int siguiente=5;
 int anterior=6;
 int pot=A0;
 int led=7;
-<<<<<<< HEAD
 int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
-=======
-int t,play,sto,next,bef,vol,v,po,d, minutos, segundos; //Configuracion de pins
->>>>>>> da2340186daf881b4c15a6c291509735068472e1
 //---------------------------------------------------------------------
 void setup()
 {
-  setupy(); //llamar variable map
+   //llamar variable map
   
   
   mySoftwareSerial.begin(9600); //Configuracion de monitor
@@ -68,26 +64,25 @@ myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
   myDFPlayer.play(t);  //Play the first mp3
   Wire.begin();
   oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
+  
 v=0;
 d=1;
 t=1;
+
 }
 
 void loop()
 {
+  
   static unsigned long timer = millis();
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
   next=digitalRead(siguiente);
   bef=digitalRead(anterior);
   po=analogRead(pot);
-    v=po/34.1;
-<<<<<<< HEAD
+    v=po/34.13;
     delay(20);
-=======
-    delay(20); //
->>>>>>> da2340186daf881b4c15a6c291509735068472e1
-  if (millis() - timer > 120000) {
+  if (millis() - timer > 240000) {
     timer = millis();
     if(t==12){
       t=1;
