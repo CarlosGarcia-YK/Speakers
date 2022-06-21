@@ -1,4 +1,9 @@
-
+/*How to display images on arduino with 0.96" OLED
+  subscribe for more arduino Tuorials and Projects
+  Mission Critical
+  https://www.youtube.com/channel/UCM6rbuieQBBLFsxszWA85AQ?sub_confirmation=1
+  www.minov.in
+ */
 
 
 #include <SPI.h>
@@ -29,9 +34,6 @@ const unsigned char* darkallArray[1] = {
 };
 const unsigned char* haloallArray[1] = {
   halodownload__3_
-};
-const unsigned char* upyallArray[1] = {
-  upyupy
 };
 //-------------------------------------------------
 void halo(){
@@ -72,17 +74,6 @@ void ricardoB()//
   display.display();
   
   }
-
-void logo() 
-{
-  display.clearDisplay();
-   display.drawBitmap(0,0,upyupy,128,64,BLACK);    // here the 0x3c is the I2C address, check your i2c address if u have multiple devices.
-  display.clearDisplay();
-  delay(5000); 
-  display.clearDisplay();
-  display.display();
-
-}
 void pauseboton(){
   display.clearDisplay();
   display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
@@ -135,11 +126,17 @@ void volumen(){ //falta volumen
     delay(3000);
     oled.clearDisplay();
 }
+void setupy() 
+{
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // here the 0x3c is the I2C address, check your i2c address if u have multiple devices.
+  display.clearDisplay();
+  delay(2000);
 
+}
 
 //--------------------------------------------------------------------
 void album1(){
-while(t<99){
+if(t<99){
   display.clearDisplay();
        display.setCursor(10,0);
        display.setTextColor(WHITE);

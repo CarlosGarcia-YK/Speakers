@@ -24,7 +24,7 @@ int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
 //---------------------------------------------------------------------
 void setup()
 {
-   //llamar variable map
+  setupy(); //llamar variable map
   
   
   mySoftwareSerial.begin(9600); //Configuracion de monitor
@@ -64,23 +64,20 @@ myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
   myDFPlayer.play(t);  //Play the first mp3
   Wire.begin();
   oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
-  
 v=0;
 d=1;
 t=1;
-
 }
 
 void loop()
 {
-  
   static unsigned long timer = millis();
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
   next=digitalRead(siguiente);
   bef=digitalRead(anterior);
   po=analogRead(pot);
-    v=po/34.13;
+    v=po/34.1;
     delay(20);
   if (millis() - timer > 240000) {
     timer = millis();
@@ -138,8 +135,10 @@ if (play==0)
     }
      else{
       t=t;
+      
     }
-  }
+  timer = millis();
+}
 //-------------
   if (next==0)
   {
@@ -147,6 +146,7 @@ if (play==0)
     t++;
     myDFPlayer.next();
     continous();
+        timer = millis();
   }
 
   if (sto==0)
