@@ -1,10 +1,3 @@
-/*How to display images on arduino with 0.96" OLED
-  subscribe for more arduino Tuorials and Projects
-  Mission Critical
-  https://www.youtube.com/channel/UCM6rbuieQBBLFsxszWA85AQ?sub_confirmation=1
-  www.minov.in
- */
-
 
 #include <SPI.h>
 #include <Wire.h>
@@ -17,7 +10,9 @@ const unsigned char* logoallArray[1] = {
   logoupy
 };
 
-
+const unsigned char* gloriusallArray[1] = {
+  gloriusunnamed
+};
 const unsigned char* ricardoallArray[1] = {
   ricardo3
 };
@@ -30,30 +25,53 @@ const unsigned char* PauseButtonallArray[1] = {
 const unsigned char* ContinousButtonallArray[1] = {
   ContinousButtonR__1_
 };
-const unsigned char* musicallArray[1] = {
-  musicdownload__1_
+const unsigned char* barbieallArray[1] = {
+  barbieR__5_
 };
-const unsigned char* darkallArray[1] = {
-  darkdownload__2_
+const unsigned char* projectorallArray[1] = {
+  projectorth
 };
-const unsigned char* haloallArray[1] = {
-  halodownload__3_
+const unsigned char* starallArray[1] = {
+  starstar_PNG41458
 };
+const unsigned char* usesallArray[1] = {
+  usesth__1_
+};
+const unsigned char* IDallArray[1] = {
+  IDimg_331373
+};
+
 //-------------------------------------------------
-void halo(){
+void glory(){
   oled.clearDisplay();
-  oled.drawBitmap(0,0,halodownload__3_,128,64,WHITE);
+  oled.drawBitmap(0,0,gloriusunnamed,128,64,WHITE);
   oled.display();
 }
-void dark(){
+void barbie(){
   oled.clearDisplay();
-  oled.drawBitmap(0,0,darkdownload__2_,128,64,WHITE);
+  oled.drawBitmap(0,0,barbieR__5_,128,64,WHITE);
   oled.display();
   
   }
-void music()
+void projector ()
 {
-  oled.drawBitmap(0,0,musicdownload__1_,128,64,WHITE);
+  oled.drawBitmap(0,0,projectorth,128,64,WHITE);
+  oled.display();
+  }
+
+void star ()
+{
+  oled.drawBitmap(0,0,starstar_PNG41458,128,64,WHITE);
+  oled.display();
+  }
+void uses ()
+{
+  oled.drawBitmap(0,0,usesth__1_,128,64,WHITE);
+  oled.display();
+  }
+void ID ()
+{
+  oled.drawBitmap(0,0,IDimg_331373,128,64,WHITE);
   oled.display();
   }
 
@@ -149,54 +167,89 @@ if(t<99){
        oled.setCursor(10,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
-       oled.print("Song ") ;
-       oled.print(t);
+       oled.print(t); oled.print(".- ");
        oled.display();
    switch(t)
   {
     case 1:
-    music();
-    oled.display();
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Glorius");
+       
+       glory();
+       oled.display();
     delay(2000);
     oled.clearDisplay();
+    oled.display();
       break;
     case 2:
-      music();
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Barbie Girl");
+           
+      barbie();
       oled.display();
       delay(2000);
       oled.clearDisplay();
       oled.display();
       break;
     case 3:
-      dark();
-      display.display();
-    delay(2000);
-    display.clearDisplay();
-    display.display();
+        oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Projector");
+           
+      projector();
+      oled.display();
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
       break;
     case 4:
-    halo();
-    display.display();
-    delay(2000);
-    display.clearDisplay();
-    display.display();
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("One Star");
+          
+      star();
+      oled.display(); 
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
       break;
     case 5:
-     music();
-     display.display();
-    delay(2000);
-    display.clearDisplay();
-    display.display();
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Using You!");
+           
+      uses();
+      oled.display();
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
       break;
     case 6:
-      dark();
-      display.display();
+      oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Be or not be");   
+       ID();
+       oled.display(); 
        delay(2000);
-       display.clearDisplay();
-       display.display();
+       oled.clearDisplay();
+       oled.display();
       break;
     default:
        
+       oled.setCursor(30,0);
+       ID();
+       oled.display(); 
+       delay(2000);
+       oled.clearDisplay();
+       oled.display();
       break;
     }
   
