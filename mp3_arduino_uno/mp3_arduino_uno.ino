@@ -8,6 +8,7 @@
 #define alto 32
 #define oled_reset 2//
 Adafruit_SSD1306 oled(ancho,alto,&Wire,oled_reset); //Todos las librerias
+
  
 //----------------------------------------------------------------------
 
@@ -25,7 +26,7 @@ int t,play,sto,next,bef,vol,v,po,d,minutos, segundos, timer2; //Configuracion de
 //---------------------------------------------------------------------
 void setup()
 {
-  setupy(); //llamar variable map
+   //llamar variable map
   
   
   mySoftwareSerial.begin(9600); //Configuracion de monitor
@@ -60,15 +61,17 @@ if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate 
 
 Serial.println(F("DFPlayer Mini online."));
 myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
-
+Wire.begin();
+  oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
+logo();
+delay(4000);
 v=0;
 d=1;
 t=1;
 
   myDFPlayer.volume(10);  //Set volume value. From 0 to 30
   myDFPlayer.play(1);  //Play the first mp3
-  Wire.begin();
-  oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
+ 
   delay(1000);
   myDFPlayer.play(t); 
 
@@ -76,6 +79,7 @@ t=1;
 
 void loop()
 {
+ // logo();
   static unsigned long timer = millis();
   play=digitalRead(reproducir);
   sto=digitalRead(parar);

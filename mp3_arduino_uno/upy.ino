@@ -13,6 +13,10 @@
 
 #define OLED_RESET 4
 //Adafruit_SSD1306 display(OLED_RESET);
+const unsigned char* logoallArray[1] = {
+  logoupy
+};
+
 
 const unsigned char* ricardoallArray[1] = {
   ricardo3
@@ -37,61 +41,66 @@ const unsigned char* haloallArray[1] = {
 };
 //-------------------------------------------------
 void halo(){
-  display.clearDisplay();
-  display.drawBitmap(0,0,halodownload__3_,128,64,WHITE);
-  display.display();
+  oled.clearDisplay();
+  oled.drawBitmap(0,0,halodownload__3_,128,64,WHITE);
+  oled.display();
 }
 void dark(){
-  display.clearDisplay();
-  display.drawBitmap(0,0,darkdownload__2_,128,64,WHITE);
-  display.display();
+  oled.clearDisplay();
+  oled.drawBitmap(0,0,darkdownload__2_,128,64,WHITE);
+  oled.display();
   
   }
 void music()
 {
-  display.drawBitmap(0,0,musicdownload__1_,128,64,WHITE);
-  display.display();
+  oled.drawBitmap(0,0,musicdownload__1_,128,64,WHITE);
+  oled.display();
   }
 
-
+void logo()
+{
+  oled.clearDisplay();
+  oled.drawBitmap(0,0,logoupy,128,64,WHITE);
+  oled.display();
+  
+  }
 void ricardo()
 {
-  display.clearDisplay();
-  display.drawBitmap(0,0,ricardo3,128,64,WHITE);
-  display.display();
+  oled.clearDisplay();
+  oled.drawBitmap(0,0,ricardo3,128,64,WHITE);
+  oled.display();
   delay(4000);
-  display.clearDisplay();
-  display.display();
+  oled.clearDisplay();
   }
 
 void ricardoB()//
 {
-  display.clearDisplay();
+  oled.clearDisplay();
   display.drawBitmap(0,0,ricardoB3,128,64,WHITE);
-  display.display();
+  oled.display();
   delay(4000);
-  display.clearDisplay();
-  display.display();
+  oled.clearDisplay();
+  oled.display();
   
   }
 void pauseboton(){
-  display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
-  display.display();
+  oled.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
+  oled.display();
   
   }
 void continueBoton()
 {
-  display.clearDisplay();
-  display.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
-  display.display();
+  oled.clearDisplay();
+  oled.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
+  oled.display();
   delay(4000);
-  display.clearDisplay();
-  display.display();
+  oled.clearDisplay();
+  oled.display();
   }
 
 
 void before(){  //falta before 
-  display.clearDisplay();
+  oled.clearDisplay();
     ricardoB();
     album1();
 }
@@ -107,12 +116,12 @@ void stopped(){
 }
 
 void start(){ // solo 1 falta
-    display.clearDisplay();
-    display.drawBitmap(0, 0, myBitmap, 128, 64, WHITE);
-     display.display();
+    oled.clearDisplay();
+    oled.drawBitmap(0, 0, myBitmap, 128, 64, WHITE);
+     oled.display();
      delay(2000);
-     display.clearDisplay();
-      display.display();
+     oled.clearDisplay();
+     oled.display();
      //
 }
 void volumen(){ //falta volumen 
@@ -136,26 +145,27 @@ void setupy()
 //--------------------------------------------------------------------
 void album1(){
 if(t<99){
-  display.clearDisplay();
-       display.setCursor(10,0);
-       display.setTextColor(WHITE);
-       display.setTextSize(1);
-       display.print("Song" + t);
-       display.display();
+  oled.clearDisplay();
+       oled.setCursor(10,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Song ") ;
+       oled.print(t);
+       oled.display();
    switch(t)
   {
     case 1:
     music();
-    display.display();
+    oled.display();
     delay(2000);
-    display.clearDisplay();
+    oled.clearDisplay();
       break;
     case 2:
       music();
-      display.display();
+      oled.display();
       delay(2000);
-      display.clearDisplay();
-      display.display();
+      oled.clearDisplay();
+      oled.display();
       break;
     case 3:
       dark();
