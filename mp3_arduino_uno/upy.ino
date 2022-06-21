@@ -75,7 +75,6 @@ void ricardoB()//
   
   }
 void pauseboton(){
-  display.clearDisplay();
   display.drawBitmap(0,0,PauseButtonR,128,64,WHITE);
   display.display();
   

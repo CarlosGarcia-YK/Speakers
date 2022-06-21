@@ -20,7 +20,8 @@ int siguiente=5;
 int anterior=6;
 int pot=A0;
 int led=7;
-int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
+bool pausa=false;
+int t,play,sto,next,bef,vol,v,po,d,minutos, segundos, timer2; //Configuracion de pins
 //---------------------------------------------------------------------
 void setup()
 {
@@ -60,13 +61,17 @@ if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate 
 Serial.println(F("DFPlayer Mini online."));
 myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
 
-  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
-  myDFPlayer.play(t);  //Play the first mp3
-  Wire.begin();
-  oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
 v=0;
 d=1;
 t=1;
+
+  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
+  myDFPlayer.play(1);  //Play the first mp3
+  Wire.begin();
+  oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
+  delay(1000);
+  myDFPlayer.play(t); 
+
 }
 
 void loop()
@@ -79,6 +84,7 @@ void loop()
   po=analogRead(pot);
     v=po/34.1;
     delay(20);
+  if(pausa==false){
   if (millis() - timer > 240000) {
     timer = millis();
     if(t==12){
@@ -103,6 +109,7 @@ void loop()
   }
   oled.print(segundos);
   oled.display();
+  }
     
 //if (vol!=v){ //si vulmen es diferente
     vol=v;
@@ -112,6 +119,7 @@ void loop()
 //----------------------
 if (play==0)
 {
+    pausa=false;
     delay(2);
     d++;
     if (d==1){
@@ -122,6 +130,7 @@ if (play==0)
       myDFPlayer.start();
       start();
     }
+    timer=timer+millis()-timer2 ;
   }
 //-------------------------
   if (bef==0){
@@ -151,6 +160,8 @@ if (play==0)
 
   if (sto==0)
   {
+    timer2=millis();
+    pausa=true;
     delay(2);
     myDFPlayer.pause();
     stopped();
