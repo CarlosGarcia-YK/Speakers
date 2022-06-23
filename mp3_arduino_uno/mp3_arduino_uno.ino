@@ -1,5 +1,5 @@
 #include <DFRobotDFPlayerMini.h>
-#include <Arduino.h>
+#include <Arduino.h>.
 #include <SoftwareSerial.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h> //ag
@@ -8,6 +8,7 @@
 #define alto 32
 #define oled_reset 2//
 Adafruit_SSD1306 oled(ancho,alto,&Wire,oled_reset); //Todos las librerias
+
  
 //----------------------------------------------------------------------
 
@@ -17,20 +18,17 @@ void printDetail(uint8_t type, int value);
 int reproducir=7;
 int parar=3;
 int siguiente=5;
-int x;
 int anterior=6;
 int pot=A0;
 int led=7;
-int busy=13 ;
-bool inicio=false ;
-bool first=false;
-int acumulador,timer;
-int t,play,sto,next,bef,vol,v,po,d,minutos, segundos; //Configuracion de pins
+bool pausa=false;
+int t,play,sto,next,bef,vol,v,po,d,minutos, segundos, timer2; //Configuracion de pins
 //---------------------------------------------------------------------
 void setup()
 {
+   //llamar variable map
   
-  setupy();
+  
   mySoftwareSerial.begin(9600); //Configuracion de monitor
   Serial.begin(9600);
   Serial.println();
@@ -41,7 +39,7 @@ pinMode(reproducir,INPUT); //Configuracion de inputs
 pinMode(parar,INPUT);
 pinMode(siguiente,INPUT);
 pinMode(anterior,INPUT);
-pinMode(busy,INPUT);
+  
   
 //------------------------------------------------------
 
@@ -56,35 +54,50 @@ if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate 
     oled.setTextSize(1);
     oled.print("2.Please insert the SD card!");
     oled.display();
+    
+    while(true);
+  }
 //--------------------------------------------
 
 Serial.println(F("DFPlayer Mini online."));
 myDFPlayer.outputDevice(DFPLAYER_DEVICE_SD);
-
-  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
-  myDFPlayer.play(1);
-  delay(1000);
-  myDFPlayer.stop();
-  Wire.begin();
+Wire.begin();
   oled.begin(SSD1306_SWITCHCAPVCC,0x3C);
+logo();
+delay(4000);
 v=0;
 d=1;
 t=1;
 
-}
+  myDFPlayer.volume(10);  //Set volume value. From 0 to 30
+  myDFPlayer.play(1);  //Play the first mp3
+ 
+  delay(1000);
+  myDFPlayer.play(t); 
+
 }
 
 void loop()
 {
-  if((inicio=true) && (first==false)){
-    acumulador=millis();
-    first=true ;
-  }
+ // logo();
+  static unsigned long timer = millis();
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
   next=digitalRead(siguiente);
   bef=digitalRead(anterior);
-  if(digitalRead(busy)==LOW){
+  po=analogRead(pot);
+    v=po/34.1;
+    delay(20);
+  if(pausa==false){
+  if (millis() - timer > 240000) {
+    timer = millis();
+    if(t==12){
+      t=1;
+   }else{
+      t=t+1 ;
+    }
+    myDFPlayer.play(t);  //Play next mp3 every 3 second.
+  }
   oled.clearDisplay();
   oled.setTextColor(WHITE);
   oled.setCursor(10,0) ;
@@ -99,34 +112,60 @@ void loop()
     oled.print("0");
   }
   oled.print(segundos);
-  album1();
+  oled.display();
   }
+    
+//if (vol!=v){ //si vulmen es diferente
+    vol=v;
+    Serial.println (vol);
+    myDFPlayer.volume(vol); 
+//}
+//----------------------
 if (play==0)
 {
+    pausa=false;
     delay(2);
     d++;
     if (d==1){
     myDFPlayer.play();
-    start();
+     start();
     }
     else if(t or d !=1){
       myDFPlayer.start();
       start();
     }
+    timer=timer+millis()-timer2 ;
   }
 //-------------------------
-
+  if (bef==0){
+    delay (2);
+    myDFPlayer.previous();
+    before();
+    t=t-1;
+    if (t==0)
+    {
+      t=1;
+    }
+     else{
+      t=t;
+      
+    }
+  timer = millis();
+}
 //-------------
-  if ((next==0) && (x==1))
+  if (next==0)
   {
     delay(2);
     t++;
     myDFPlayer.next();
     continous();
+        timer = millis();
   }
 
   if (sto==0)
   {
+    timer2=millis();
+    pausa=true;
     delay(2);
     myDFPlayer.pause();
     stopped();
@@ -135,5 +174,6 @@ if (play==0)
   if (myDFPlayer.available()) {
     printDetail(myDFPlayer.readType(), myDFPlayer.read()); //Print the detail message from DFPlayer to handle different errors and states.
   }
-  x=next; 
+  
+  
 }
