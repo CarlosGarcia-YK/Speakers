@@ -23,6 +23,7 @@ int pot=A0;
 int led=7;
 bool pausa=false;
 int t,play,sto,next,bef,vol,v,po,d,minutos, segundos, timer2; //Configuracion de pins
+int timer=0 ;
 //---------------------------------------------------------------------
 void setup()
 {
@@ -54,8 +55,6 @@ if (!myDFPlayer.begin(mySoftwareSerial)) {  //Use softwareSerial to communicate 
     oled.setTextSize(1);
     oled.print("2.Please insert the SD card!");
     oled.display();
-    
-    while(true);
   }
 //--------------------------------------------
 
@@ -74,13 +73,13 @@ t=1;
  
   delay(1000);
   myDFPlayer.play(t); 
+  timer=millis();
 
 }
 
 void loop()
 {
- // logo();
-  static unsigned long timer = millis();
+  static unsigned long timer= millis() ;
   play=digitalRead(reproducir);
   sto=digitalRead(parar);
   next=digitalRead(siguiente);
@@ -99,8 +98,9 @@ void loop()
     myDFPlayer.play(t);  //Play next mp3 every 3 second.
   }
   oled.clearDisplay();
+  oled.setTextSize(2);
   oled.setTextColor(WHITE);
-  oled.setCursor(10,0) ;
+  oled.setCursor(40,0) ;
   segundos=((millis()-timer)/1000)%60 ;
   minutos=((millis()-timer)/1000)/60 ;
   if(minutos<10){
@@ -114,55 +114,44 @@ void loop()
   oled.print(segundos);
   oled.display();
   }
-    
-//if (vol!=v){ //si vulmen es diferente
     vol=v;
     Serial.println (vol);
     myDFPlayer.volume(vol); 
-//}
+
 //----------------------
-if (play==0)
+if ((play==0) && (pausa==true))
 {
     pausa=false;
     delay(2);
-    d++;
-    if (d==1){
-    myDFPlayer.play();
-     start();
-    }
-    else if(t or d !=1){
-      myDFPlayer.start();
-      start();
-    }
+    myDFPlayer.start();
+    start();
+  
     timer=timer+millis()-timer2 ;
   }
 //-------------------------
   if (bef==0){
-    delay (2);
+ 
+    t--;
     myDFPlayer.previous();
+    delay(2);
+    timer = millis();
+    pausa=false ;
     before();
-    t=t-1;
-    if (t==0)
-    {
-      t=1;
-    }
-     else{
-      t=t;
-      
-    }
-  timer = millis();
+  
 }
 //-------------
   if (next==0)
   {
-    delay(2);
     t++;
     myDFPlayer.next();
+    delay(2);
+    timer = millis();
+    pausa=false ;
     continous();
-        timer = millis();
+        
   }
 
-  if (sto==0)
+  if ((sto==0) && (play==1))
   {
     timer2=millis();
     pausa=true;

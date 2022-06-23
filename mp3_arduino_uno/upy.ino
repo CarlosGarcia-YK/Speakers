@@ -93,11 +93,10 @@ void ricardo()
 void ricardoB()//
 {
   oled.clearDisplay();
-  display.drawBitmap(0,0,ricardoB3,128,64,WHITE);
+  oled.drawBitmap(0,0,ricardoB3,128,64,WHITE);
   oled.display();
   delay(4000);
   oled.clearDisplay();
-  oled.display();
   
   }
 void pauseboton(){
