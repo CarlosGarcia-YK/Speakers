@@ -44,8 +44,7 @@ void dark(){
   }
 void music()
 {
-  display.drawBitmap(0,0,musicdownload__1_,128,64,WHITE);
-  display.display();
+  oled.display();
   }
 
 
@@ -54,7 +53,7 @@ void ricardo()
   display.clearDisplay();
   display.drawBitmap(0,0,ricardo3,128,64,WHITE);
   display.display();
-  delay(4000);
+  delay(1000);
   display.clearDisplay();
   display.display();
   }
@@ -80,7 +79,7 @@ void continueBoton()
   display.clearDisplay();
   display.drawBitmap(0,0,ContinousButtonR__1_,128,64,WHITE);
   display.display();
-  delay(4000);
+  delay(1000);
   display.clearDisplay();
   display.display();
   }
@@ -109,6 +108,7 @@ void start(){ // solo 1 falta
      delay(2000);
      display.clearDisplay();
       display.display();
+      inicio= true ;
      //
 }
 void volumen(){ //falta volumen 
@@ -131,40 +131,27 @@ void setupy()
 
 //--------------------------------------------------------------------
 void album1(){
-while(t<99){
-  display.clearDisplay();
-       display.setCursor(10,0);
-       display.setTextColor(WHITE);
-       display.setTextSize(1);
-       display.print("Song" + t);
-       display.display();
+if(t<99){
+       oled.setCursor(80,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Song ");
+       oled.print(t);
    switch(t)
   {
     case 1:
     music();
-    display.display();
-    delay(2000);
-    display.clearDisplay();
       break;
     case 2:
       music();
-      display.display();
-      delay(2000);
-      display.clearDisplay();
-      display.display();
       break;
     case 3:
       dark();
-      display.display();
-    delay(2000);
-    display.clearDisplay();
-    display.display();
+      oled.display();
+
       break;
     case 4:
     halo();
-    display.display();
-    delay(2000);
-    display.clearDisplay();
     display.display();
       break;
     case 5:
@@ -177,7 +164,6 @@ while(t<99){
     case 6:
       dark();
       display.display();
-       delay(2000);
        display.clearDisplay();
        display.display();
       break;
@@ -188,12 +174,7 @@ while(t<99){
   
   
   }
-<<<<<<< HEAD
-
-
-=======
 }
->>>>>>> b251e3c98fde123f6910fea4fe6f5817d1210818
 //--------------------------------------------------------------------
 
 void printDetail(uint8_t type, int value){
