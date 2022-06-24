@@ -4,45 +4,13 @@
 #include <Adafruit_SSD1306.h>
 
 #define OLED_RESET 4
-//Adafruit_SSD1306 display(OLED_RESET);
-const unsigned char* logoallArray[1] = {
-  logoupy
-};
+///-------------------------------------------------
 
-const unsigned char* gloriusallArray[1] = {
-  gloriusunnamed
-};
-const unsigned char* ricardoallArray[1] = {
-  ricardo3
-};
-const unsigned char* ricardoBallArray[1] = {
-  ricardoB3
-};
-const unsigned char* PauseButtonallArray[1] = {
-  PauseButtonR
-};
-const unsigned char* ContinousButtonallArray[1] = {
-  ContinousButtonR__1_
-};
-const unsigned char* barbieallArray[1] = {
-  barbieR__5_
-};
-const unsigned char* projectorallArray[1] = {
-  projectorth
-};
-const unsigned char* starallArray[1] = {
-  starstar_PNG41458
-};
-const unsigned char* usesallArray[1] = {
-  usesth__1_
-};
-const unsigned char* IDallArray[1] = {
-  IDimg_331373
-};
-
-//-------------------------------------------------
+void bloody(){
+  oled.drawBitmap(0,0,bloodyimg,128,64,WHITE);
+  oled.display();
+}
 void glory(){
-  oled.clearDisplay();
   oled.drawBitmap(0,0,gloriusunnamed,128,64,WHITE);
   oled.display();
 }
@@ -68,6 +36,16 @@ void uses ()
   oled.drawBitmap(0,0,usesth__1_,128,64,WHITE);
   oled.display();
   }
+void endless()
+{
+  oled.drawBitmap(0,0,endlessimg,128,64,WHITE);
+  oled.display();
+}
+void emptiness()
+{
+  oled.drawBitmap(0,0,emptinessimg,128,64,WHITE);
+  oled.display();
+}
 void ID ()
 {
   oled.drawBitmap(0,0,IDimg_331373,128,64,WHITE);
@@ -86,7 +64,7 @@ void ricardo()
   oled.clearDisplay();
   oled.drawBitmap(0,0,ricardo3,128,64,WHITE);
   oled.display();
-  delay(4000);
+  delay(2000);
   oled.clearDisplay();
   }
 
@@ -95,7 +73,7 @@ void ricardoB()//
   oled.clearDisplay();
   oled.drawBitmap(0,0,ricardoB3,128,64,WHITE);
   oled.display();
-  delay(4000);
+  delay(2000);
   oled.clearDisplay();
   
   }
@@ -137,8 +115,6 @@ void start(){ // solo 1 falta
      oled.display();
      delay(2000);
      oled.clearDisplay();
-     oled.display();
-     //
 }
 void volumen(){ //falta volumen 
   oled.clearDisplay();
@@ -149,13 +125,6 @@ void volumen(){ //falta volumen
     oled.display();
     delay(3000);
     oled.clearDisplay();
-}
-void setupy() 
-{
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // here the 0x3c is the I2C address, check your i2c address if u have multiple devices.
-  display.clearDisplay();
-  delay(2000);
-
 }
 
 //--------------------------------------------------------------------
@@ -170,54 +139,39 @@ if(t<99){
    switch(t)
   {
     case 1:
-       oled.setCursor(30,0);
+      oled.setCursor(30,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
-       oled.print("Glorius");
-       
-       glory();
+       oled.print("Live and Learn");   
+       endless();
+       oled.display(); 
+       delay(2000);
+       oled.clearDisplay();
        oled.display();
-    delay(2000);
-    oled.clearDisplay();
-    oled.display();
       break;
     case 2:
-       oled.setCursor(30,0);
+      oled.setCursor(30,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
-       oled.print("Barbie Girl");
-           
-      barbie();
-      oled.display();
-      delay(2000);
-      oled.clearDisplay();
-      oled.display();
+       oled.print("Emptiness and");   
+       emptiness();
+       oled.display(); 
+       delay(2000);
+       oled.clearDisplay();
+       oled.display();
       break;
     case 3:
-        oled.setCursor(30,0);
+      oled.setCursor(30,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
-       oled.print("Projector");
-           
-      projector();
-      oled.display();
-      delay(2000);
-      oled.clearDisplay();
-      oled.display();
+       oled.print("Endless");   
+       endless();
+       oled.display(); 
+       delay(2000);
+       oled.clearDisplay();
+       oled.display();
       break;
     case 4:
-       oled.setCursor(30,0);
-       oled.setTextColor(WHITE);
-       oled.setTextSize(1);
-       oled.print("One Star");
-          
-      star();
-      oled.display(); 
-      delay(2000);
-      oled.clearDisplay();
-      oled.display();
-      break;
-    case 5:
        oled.setCursor(30,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
@@ -229,19 +183,66 @@ if(t<99){
       oled.clearDisplay();
       oled.display();
       break;
-    case 6:
-      oled.setCursor(30,0);
+    case 5:
+       oled.setCursor(30,0);
        oled.setTextColor(WHITE);
        oled.setTextSize(1);
-       oled.print("Be or not be");   
-       ID();
-       oled.display(); 
+       oled.print("One Star");
+          
+      star();
+      oled.display(); 
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
+      break;
+    case 6:
+        oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Projector");
+           
+      projector();
+      oled.display();
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
+      break;
+    case 7:
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Barbie Girl");
+           
+      barbie();
+      oled.display();
+      delay(2000);
+      oled.clearDisplay();
+      oled.display();
+      break;
+    case 8:
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Glorius");
+       
+       glory();
+       oled.display();
+    delay(2000);
+    oled.clearDisplay();
+    oled.display();
+      break;
+    case 9:
+       oled.setCursor(30,0);
+       oled.setTextColor(WHITE);
+       oled.setTextSize(1);
+       oled.print("Bloody Stream");
+       bloody();
+       oled.display();
        delay(2000);
        oled.clearDisplay();
        oled.display();
-      break;
-    default:
-       
+       break;
+    default:   
        oled.setCursor(30,0);
        ID();
        oled.display(); 
